@@ -12,11 +12,12 @@ else
     exit
 fi
 echo "Building Local Docker Image this will take a wile.."
+cd ..
 sudo docker build \
   --build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
   --build-arg=FRAPPE_BRANCH=version-15 \
   --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 \
-  --tag=craftsman-custom:latest \
+  --tag=craftsman-custom \
   --file=images/layered/Containerfile .
 
 echo "Docker Image Created"
