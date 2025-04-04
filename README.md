@@ -22,9 +22,16 @@ To play in an already set up sandbox, in your browser, click the button below:
 First clone the repo:
 
 ```sh
-git clone https://github.com/frappe/frappe_docker
+git clone https://github.com/CraftsmanGlazing/frappe_docker
 cd frappe_docker
 ```
+### For the Custom build (This will take a while) ###
+```sh
+cd craftsman
+sudo prestage.sh
+cd ..
+```
+
 
 Then run: `docker compose -f pwd.yml up -d`
 
