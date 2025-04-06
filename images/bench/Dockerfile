@@ -13,6 +13,7 @@ RUN apt-get update \
     postgresql-client \
     gettext-base \
     wget \
+    nano \
     # for PDF
     libssl-dev \
     fonts-cantarell \
