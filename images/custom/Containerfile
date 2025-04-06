@@ -16,6 +16,7 @@ RUN useradd -ms /bin/bash frappe \
     && apt-get install --no-install-recommends -y \
     curl \
     git \
+    nano \
     vim \
     nginx \
     gettext-base \
