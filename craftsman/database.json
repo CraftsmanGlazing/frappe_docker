@@ -1,0 +1,15 @@
+  GNU nano 7.2                                                     common_site_config.json
+{
+ "db_host": "db",
+ "db_name": "ERP",
+ "db_password": "Craftsman1",
+ "db_port": 3306,
+ "db_type": "postgres",
+ "db_user": "craftsman",
+ "default_site": "frontend",
+ "redis_cache": "redis://redis-cache:6379",
+ "redis_queue": "redis://redis-queue:6379",
+ "redis_socketio": "redis://redis-queue:6379",
+ "socketio_port": 9000
+}
+
