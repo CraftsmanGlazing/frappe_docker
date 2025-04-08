@@ -1,0 +1,8 @@
+mkdir certs
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes \
+  -keyout certs/key.pem \
+  -out certs/cert.pem \
+  -days 365 \
+  -subj "/CN=whoami.localhost"
+
+(we need to set the CN to work)
