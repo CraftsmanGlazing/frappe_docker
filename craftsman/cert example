@@ -1,8 +1,8 @@
 mkdir certs
 openssl req -x509 -newkey rsa:4096 -sha256 -nodes \
-  -keyout certs/key.pem \
-  -out certs/cert.pem \
+  -keyout key.pem \
+  -out cert.pem \
   -days 365 \
-  -subj "/CN=whoami.localhost"
+  -subj "/CN=erp.craftsmansystem"
 
 (we need to set the CN to work)
