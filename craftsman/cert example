@@ -6,3 +6,5 @@ openssl req -x509 -newkey rsa:4096 -sha256 -nodes \
   -subj "/CN=erp.localhost"
 
 (we need to set the CN to work)
+
+(didn't  n3ed this)
