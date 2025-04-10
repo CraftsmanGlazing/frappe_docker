@@ -1,4 +1,3 @@
 #!bin/bash
-
-upload https-compose.yaml
-add docker compose for https-compose.yaml 
+# This has to be installed after
+docker compose -f https-compose.yml up -d
