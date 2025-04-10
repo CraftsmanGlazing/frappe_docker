@@ -1,0 +1,55 @@
+services:
+  proxy:
+    image: traefik:latest
+    command:
+     # - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+     # - --log.level=INFO
+     # - "--api=true"
+      # - "traefik.http.routers.api.middlewares=redirect-to-https"  # Redirect to HTTPS
+      # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+     # - "--api.dashboard=true"
+     # - "--entrypoints.dashboard.address=:8100" #only once secured
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=sysadmin@craftsmanglazing.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    networks:
+      - frappe_docker_frappe_network
+    ports:
+      - "80:80"
+      - "8100:8100"
+      # HTTP traffic
+      - "443:443"  # HTTPS traffic
+    restart: unless-stopped
+    volumes:
+     #- cert-data:/certs
+     - "./letsencrypt:/letsencrypt"
+     - "/var/run/docker.sock:/var/run/docker.sock:ro"
+   # labels:
+     #- "traefik.http.middlewares.https_redirect.redirectscheme.scheme=https"
+     #- "traefik.http.middlewares.https_redirect.redirectscheme.permanent=true"
+     #- "traefik.http.routers.http_catchall.rule=HostRegexp(`{any:.+}`)"
+     #- "traefik.http.routers.http_catchall.entrypoints=http"
+     #- "traefik.http.routers.http_catchall.middlewares=https_redirect"
+
+
+  whoami:
+     image: "traefik/whoami"
+     container_name: "whoami-service"
+     labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`) || Host(`whoami.craftsmansystem`)"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      - "traefik.http.routers.whoami.tls.certresolver=myresolver"
+volumes:
+  cert-data:
+    name: frappe_docker_cert-data2
+    external: true
+networks:
+  frappe_docker_frappe_network:
+    external: true
