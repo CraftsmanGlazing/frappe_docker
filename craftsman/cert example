@@ -1,0 +1,10 @@
+mkdir certs
+openssl req -x509 -newkey rsa:4096 -sha256 -nodes \
+  -keyout key.pem \
+  -out cert.pem \
+  -days 365 \
+  -subj "/CN=erp.localhost"
+
+(we need to set the CN to work)
+
+(didn't  n3ed this)

@@ -77,6 +77,7 @@ FROM base AS builder
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     # For frappe framework
+    nano \
     wget \
     #for building arm64 binaries
     libcairo2-dev \
