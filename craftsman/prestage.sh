@@ -20,7 +20,7 @@ sudo docker build \
   --build-arg=FRAPPE_BRANCH=version-15 \
   --build-arg=APPS_JSON_BASE64=$APPS_JSON_BASE64 \
   --tag=craftsman-custom \
-  --file=images/layered/Containerfile .
+  --file=images/custom/Containerfile .
 
 echo "Docker Image Created"
 export CUSTOM_IMAGE='craftsman-custom'
