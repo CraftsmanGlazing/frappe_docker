@@ -18,7 +18,7 @@ for container in ${container_array[@]}; do
 done
 wait
 #Installing App
-docker exec ${backend} bench --site frontend install-app helpdesk
+docker exec ${backend} bench --site frontend install-app hrms
 docker exec ${backend} bench --site frontend migrate
 docker exec ${backend} bench --site frontend clear-cache
 
