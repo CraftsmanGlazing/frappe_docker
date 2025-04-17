@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Docker Info
-backend="docker_frappe_backend-1"
+backend="frappe_docker_backend-1"
 frontend="frappe_docker-frontend-1"
 scheduler="frappe_docker-scheduler-1"
 websocker="frappe_docker-websocket-1"
