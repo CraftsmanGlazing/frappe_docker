@@ -26,4 +26,4 @@ docker exec ${backend} bench --site frontend clear-cache
 echo "Restarting... Please Note: you may need to restart docker containters"
 ##Services Restart
 docker exec ${backend} bench restart
-#docker restart $(docker ps -q) #docker restart doesn't work it locks up
+docker restart $(docker ps -q) #docker restart doesn't work it locks up
