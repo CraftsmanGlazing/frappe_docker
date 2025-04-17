@@ -14,6 +14,10 @@ container_array=(${frontend} ${backend} ${scheduler} ${websocket} ${queueLong} $
 ##installing backend files in all containers
 for container in ${container_array[@]}; do
         echo "$container : Install Started"
+        docker exec ${container} python -m pip install --upgrade redis &
+        sleep 2
+        docker exec ${container} import redis from redis.commands.json.path import Path &
+        sleep 3
         docker exec ${container} bench get https://github.com/frappe/wiki.git --branch version-14 --resolve-deps &
 done
 wait
