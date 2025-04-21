@@ -14,7 +14,7 @@ container_array=(${frontend} ${backend} ${scheduler} ${websocket} ${queueLong} $
 ##installing backend files in all containers
 for container in ${container_array[@]}; do
         echo $container
-        docker exec ${container} bench get https://github.com/frappe/hrms.git --branch main --resolve-deps &
+        docker exec ${container} bench get https://github.com/frappe/lms.git --branch main --resolve-deps &
 done
 wait
 #Installing App
