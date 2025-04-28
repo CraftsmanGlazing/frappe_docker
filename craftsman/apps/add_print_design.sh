@@ -25,3 +25,22 @@ docker exec ${backend} bench --site frontend clear-cache
 ##Services Restart
 docker exec ${backend} bench restart
 docker restart $(docker ps -q)
+
+### This all needs to be integrated in here as well
+apt update
+apt install dbus
+apt install -y fonts-liberation libappindicator3-1 libasound2 \
+    libatk-bridge2.0-0 libatk1.0-0 libcups2 libdbus-1-3 libgdk-pixbuf2.0-0 \
+    libnspr4 libnss3 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+    xdg-utils libu2f-udev libvulkan1 libxss1 libgbm1
+
+
+apt install wget
+wget -qO - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | \
+  tee /etc/apt/sources.list.d/google-chrome.list
+
+apt update
+apt install -y wget gnupg2 software-properties-common
+apt install -y google-chrome-stable
+
