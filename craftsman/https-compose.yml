@@ -30,7 +30,8 @@ services:
      #- cert-data:/certs
      - "./letsencrypt:/letsencrypt"
      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-   # labels:
+    labels:
+     - "traefik.http.middlewares.https-header.headers.customRequestHeaders.X-Forwarded-Proto=https"
      #- "traefik.http.middlewares.https_redirect.redirectscheme.scheme=https"
      #- "traefik.http.middlewares.https_redirect.redirectscheme.permanent=true"
      #- "traefik.http.routers.http_catchall.rule=HostRegexp(`{any:.+}`)"
