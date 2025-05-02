@@ -1,3 +1,9 @@
+# To clean up database so you can set it up in dev enviorment:
+
+DELETE FROM `tabSocial Login Key` WHERE name = 'Google';
+DELETE FROM `tabPassword` WHERE name = 'Social Login Key/google/client_secret';
+DELETE FROM `__Auth` WHERE doctype = 'User' AND fieldname = 'google_openid';
+
 [![Build Stable](https://github.com/frappe/frappe_docker/actions/workflows/build_stable.yml/badge.svg)](https://github.com/frappe/frappe_docker/actions/workflows/build_stable.yml)
 [![Build Develop](https://github.com/frappe/frappe_docker/actions/workflows/build_develop.yml/badge.svg)](https://github.com/frappe/frappe_docker/actions/workflows/build_develop.yml)
 
