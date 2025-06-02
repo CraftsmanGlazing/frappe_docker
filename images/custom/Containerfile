@@ -72,8 +72,7 @@ RUN useradd -ms /bin/bash frappe \
     && chown -R frappe:frappe /run/nginx.pid \
     && chmod 755 /usr/local/bin/nginx-entrypoint.sh \
     && chmod 644 /templates/nginx/frappe.conf.template
-    # Build Chromium Directory
-    && mkdir -p {NVM_DIR}/chromium
+
 FROM base AS builder
 
 RUN apt-get update \
@@ -113,6 +112,8 @@ ARG APPS_JSON_BASE64
 RUN if [ -n "${APPS_JSON_BASE64}" ]; then \
     mkdir /opt/frappe && echo "${APPS_JSON_BASE64}" | base64 -d > /opt/frappe/apps.json; \
   fi
+
+RUN mkdir -p {NVM_DIR}/chromium
 
 USER frappe
 
