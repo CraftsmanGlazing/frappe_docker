@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     volumes:
      #- cert-data:/certs
-     - "./letsencrypt:/letsencrypt"
+     - "./letsencrypt:/{HOME_DIR}/letsencrypt"
      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     labels:
      - "traefik.http.middlewares.https-header.headers.customRequestHeaders.X-Forwarded-Proto=https"
