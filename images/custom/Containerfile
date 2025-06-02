@@ -17,6 +17,7 @@ RUN useradd -ms /bin/bash frappe \
     curl \
     git \
     vim \
+    nano \
     nginx \
     gettext-base \
     file \
@@ -71,7 +72,8 @@ RUN useradd -ms /bin/bash frappe \
     && chown -R frappe:frappe /run/nginx.pid \
     && chmod 755 /usr/local/bin/nginx-entrypoint.sh \
     && chmod 644 /templates/nginx/frappe.conf.template
-
+    # Build Chromium Directory
+    && mkdir -p {NVM_DIR}/chromium
 FROM base AS builder
 
 RUN apt-get update \
