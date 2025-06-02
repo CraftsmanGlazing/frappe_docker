@@ -1,6 +1,6 @@
 #!/bin/bash
 #Install ERPNEXT Container
-
+HOME_DIR=$HOME
 cd ..
 docker compose -f pwd.yml up -d
 
