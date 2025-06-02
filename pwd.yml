@@ -171,7 +171,7 @@ services:
       - logs:/home/frappe/frappe-bench/logs
 
   redis-queue:
-    image: redis:6.2-alpine
+    image: redis/redis-stack-server:latest
     networks:
       - frappe_network
     deploy:
@@ -181,7 +181,7 @@ services:
       - redis-queue-data:/data
 
   redis-cache:
-    image: redis:6.2-alpine
+    image: redis/redis-stack-server:latest
     networks:
       - frappe_network
     deploy:
