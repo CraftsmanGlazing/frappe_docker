@@ -22,8 +22,11 @@ for container in "${containers[@]}"; do
         backend="$container"
     fi
 done
+# to change the ownership of chromium folder (for some reason when image is made it makes it root?
+docker exec ${backend} -u root chown frappe:frappe chromium/
 
 
+#Installing all apps except facade next due to it not being public
 docker exec ${backend} bench --site frontend install-app print_designer
 docker exec ${backend} bench --site frontend install-app lms
 docker exec ${backend} bench --site frontend install-app hrms
