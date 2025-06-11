@@ -47,10 +47,6 @@ services:
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`) || Host(`whoami.${HTTPS_HOSTNAME}`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
-volumes:
-  cert-data:
-    name: frappe_docker_cert-data2
-    external: true
 networks:
   frappe_docker_frappe_network:
     external: true
