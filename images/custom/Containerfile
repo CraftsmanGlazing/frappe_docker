@@ -17,6 +17,7 @@ RUN useradd -ms /bin/bash frappe \
     curl \
     git \
     vim \
+    nano \
     nginx \
     gettext-base \
     file \
@@ -78,6 +79,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
     # For frappe framework
     nano \
+    gh \
     wget \
     #for building arm64 binaries
     libcairo2-dev \
@@ -111,6 +113,8 @@ ARG APPS_JSON_BASE64
 RUN if [ -n "${APPS_JSON_BASE64}" ]; then \
     mkdir /opt/frappe && echo "${APPS_JSON_BASE64}" | base64 -d > /opt/frappe/apps.json; \
   fi
+
+RUN mkdir -p {NVM_DIR}/chromium
 
 USER frappe
 

@@ -2,5 +2,25 @@
   {
     "url": "https://github.com/CraftsmanGlazing/erpnext",
     "branch": "version-15"
+  },
+  {
+    "url": "https://github.com/frappe/hrms.git"",
+    "branch": "version-15"
+  },
+  {
+    "url": "https://github.com/frappe/crm.git",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/frappe/helpdesk.git",
+    "branch": "version-14"
+  },
+  {
+    "url": "https://github.com/frappe/print_designer.git",
+    "branch": "main"
+  },
+  {
+    "url": "https://github.com/frappe/lms.git",
+    "branch": "main"
   }
 ]

@@ -11,6 +11,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
     environment:
       DB_HOST: db
       DB_PORT: "3306"
@@ -45,6 +47,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
 
   create-site:
     image: craftsman-custom:latest
@@ -56,6 +60,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
     entrypoint:
       - bash
       - -c
@@ -135,6 +141,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
     ports:
       - "8080:8080"
       
@@ -153,6 +161,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
 
   queue-short:
     image: craftsman-custom:latest
@@ -169,9 +179,11 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
 
   redis-queue:
-    image: redis:6.2-alpine
+    image: redis/redis-stack-server:latest
     networks:
       - frappe_network
     deploy:
@@ -181,7 +193,7 @@ services:
       - redis-queue-data:/data
 
   redis-cache:
-    image: redis:6.2-alpine
+    image: redis/redis-stack-server:latest
     networks:
       - frappe_network
     deploy:
@@ -201,6 +213,8 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
 
   websocket:
     image: craftsman-custom:latest
@@ -215,12 +229,16 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
       - logs:/home/frappe/frappe-bench/logs
+      - apps:/home/frappe/frappe-bench/apps
+      - chrome:/home/frappe/frappe-bench/chromium
 
 volumes:
   db-data:
   redis-queue-data:
   sites:
   logs:
+  apps:
+  chrome:
 
 networks:
   frappe_network:
