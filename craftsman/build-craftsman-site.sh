@@ -12,12 +12,12 @@ read DOMAIN
 echo " Whats the Lookup in Domain?"
 read SUB
 
+export HTTPS_HOSTNAME="$localhostname"
+export HTTPS_DOMAIN="$DOMAIN"
+export HTTPS_SUB="$SUB"
+
 cd ..
 docker compose -f pwd.yml up -d
 cd craftsman/
-
-export HTTP_HOSTNAME="$localhostname"
-export HTTP_DOMAIN="$DOMAIN"
-export HTTP_SUB="$SUB"
 
 docker compose -f https-compose.yml up -d
