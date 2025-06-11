@@ -44,7 +44,7 @@ services:
      container_name: "whoami-service"
      labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`) || Host(`whoami.craftsmansystem`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`) || Host(`whoami.${HTTPS_HOSTNAME}`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
 volumes:
