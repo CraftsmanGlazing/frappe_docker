@@ -117,7 +117,8 @@ services:
       #traefik.http.routers.frontend.tls: true
       #traefik.http.services.frontend.loadbalancer.server.port: 80
      # - "traefik.http.routers.frontend.rule=Host(`erp.localhost`,`erp.craftsmanglazing.com`,`erp.craftsmansystem.local`,`erp.craftsmansystem`) "
-      - "traefik.http.routers.frontend.rule=Host(`erp.localhost`) || Host(`erp.craftsmanglazing.com`) || Host(`erp.craftsmansystem.local`)"
+      #- "traefik.http.routers.frontend.rule=Host(`erp.localhost`) || Host(`erp.craftsmanglazing.com`) || Host(`erp.craftsmansystem.local`)"
+      - "traefik.http.routers.frontend.rule=Host(`${HTTPS_SUB}.localhost`) || Host(`${HTTPS_SUB}.${HTTPS_DOMAIN}`) || Host(`${HTTPS_SUB}.${HTTPS_HOSTNAME}.local`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
     networks:
